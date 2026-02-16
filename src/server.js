@@ -26,7 +26,7 @@ const __dirname = path.resolve();
 app.use(
   cors({
     origin: "http://localhost:5173",
-     https://chat-app-nexa-frontend-git-main-ramakrishna-rks-projects.vercel.app/,
+     "https://chat-app-nexa-frontend-git-main-ramakrishna-rks-projects.vercel.app/",
     credentials: true, // allow cookies
   })
 );
