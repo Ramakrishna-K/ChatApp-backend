@@ -49,18 +49,18 @@ import { upload } from "../middleware/upload.js";
 
 const router = express.Router();
 
-router.post("/api/signup", signup);
-router.post("/api/login", login);
-router.post("/api/logout", logout);
+router.post("/signup", signup);
+router.post("/login", login);
+router.post("/logout", logout);
 
 router.post(
-  "/api/onboarding",
+  "/onboarding",
   protectRoute,
   upload.single("profilePic"),
   onboard
 );
 
-router.get("/api/me", protectRoute, (req, res) => {
+router.get("/me", protectRoute, (req, res) => {
   res.status(200).json({
     success: true,
     user: req.user,
