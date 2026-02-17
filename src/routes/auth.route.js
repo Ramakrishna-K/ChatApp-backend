@@ -38,34 +38,26 @@
 
 // export default router;
 
-
-
-
-
 import express from "express";
-import { login, logout, onboard, signup } from "../controllers/auth.controller.js";
-import protectRoute from "../middleware/auth.middleware.js"; // ✅ FIXED
-import { upload } from "../middleware/upload.js";
+import { signup, login, logout, getMe, onboard } from "../controllers/auth.controller.js";
+import protectRoute from "../middleware/auth.middleware.js"; // merged protectRoute
 
 const router = express.Router();
 
+/* =========================
+   AUTH ROUTES
+========================= */
+
+// Signup & Login
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/logout", logout);
 
-router.post(
-  "/onboarding",
-  protectRoute,
-  upload.single("profilePic"),
-  onboard
-);
+// Get current user
+router.get("/me", protectRoute, getMe);
 
-router.get("/me", protectRoute, (req, res) => {
-  res.status(200).json({
-    success: true,
-    user: req.user,
-  });
-});
+// Onboarding (protected)
+router.post("/onboard", protectRoute, onboard);
 
 export default router;
 
