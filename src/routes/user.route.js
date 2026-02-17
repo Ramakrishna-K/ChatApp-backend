@@ -12,7 +12,7 @@ import {
 const router = express.Router();
 
 // apply auth middleware to all routes
-router.use(protect);
+router.use(protectRoute);
 
 router.get("/", getRecommendedUsers);
 router.get("/friends", getMyFriends);
