@@ -41,7 +41,7 @@ app.use(
   })
 );
 // increase payload limit (important for profile image upload)
-app.use(express.json({ limit: "10mb" }));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 app.use(cookieParser());
